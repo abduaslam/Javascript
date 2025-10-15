@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is my first webpage created using HTML.">
+    <meta name="keywords" content="HTML, web development, coding, tutorial">
+    <title>My First Web Page</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 12px;
+            padding: 9px;
+        }
+
+        #area {
+            width: 160px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: azure;
+            text-align: center;
+            margin-top: 10%;
+            font-size: 16px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular',
+             'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+             color: black;
+        }
+        #btn{
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to My js</h1>
+    <div id="area"></div>
+    <button id="btn">click me</button>
+
+    <script>
+        myDive = document.getElementById("area")
+        buttonn = document.getElementById("btn")
+
+        buttonn.addEventListener("click", function textChange() {
+            myDive.textContent = "hello studant";
+        })
+
+
+    </script>
+</body>
+
+</html>
