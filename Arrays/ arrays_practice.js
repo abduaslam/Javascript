@@ -85,7 +85,7 @@ for(let i=0;i<arr1.length;i++){
 console.log("Q10. Write a program that prints all numbers in an array multiplied by 2 using a loop.")
 
 let arr2=[2,3,4,5,6,7,8,9,10]
-let  newarray=[];.toLocaleUpperCase
+let  newarray=[];
 for(let i=1;i<arr2.length;i++){
    
       newarray.push(arr2[i]*2);
@@ -128,6 +128,11 @@ console.log("another way to solve this problem.")
  smallest=Math.min(...arraa)
 
  console.log(`the lagest number is :${largest} the smallest number is :${smallest}`);
+
+ let numbers=[1,2,3,4,5,"abdu",7,8];
+ let x=numbers[numbers.length-1];
+ let y=numbers["abdu"]
+ console.log(x)
 
 
 
