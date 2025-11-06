@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="A short description of your page here" />
+  <meta name="keywords" content="HTML, CSS, JavaScript, website, template" />
+  <meta name="author" content="Your Name" />
+
+  <title>Your Website Title</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- <link rel="stylesheet" href="./style.css" /> -->
+  <style>
+    body {
+      background-color: rgb(10, 73, 73);
+      display: flex;
+      justify-content: center;
+      padding: 30px 13px;
+      font-family: 'Courier New', Courier, monospace;
+      gap: 20px;
+    }
+
+    #findDetails {
+      background-color: bisque;
+      padding: 14px 9px;
+      border-radius: 10px;
+      box-shadow: 4 4 5 #f57;
+      text-align: center;
+
+    }
+
+    #insertDetails {
+      background-color: rgb(175, 120, 53);
+      padding: 14px 5px;
+      border-radius: 10px;
+      box-shadow: 4 4 5 #f57;
+      text-align: center;
+
+    }
+
+    input {
+      padding: 4px;
+      border-radius: 10px;
+    }
+
+    button {
+      border-radius: 5px;
+      margin-bottom: 5px;
+      padding: 4px;
+    }
+
+    button:hover {
+      background-color: rgb(17, 241, 241);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="insertDetails">
+    <h1>Enter data</h1>
+    <h4>ID</h4>
+    <input id="enterId" type="text" placeholder="Id">
+    <h4>Name</h4>
+    <input id="enterName" type="text" placeholder="Name">
+    <h4>Age</h4>
+    <input id="enterAge" type="number" placeholder="Age"><br> <br>
+    <button id="insert" type="submit">ENSERT</button>
+    <button id="update" type="submit">update</button>
+    <button id="REMOVE" type="submit">REMOVE</button>
+  </div>
+  <div id="findDetails">
+    <h1>Find data by Id</h1>
+    <h4>ID</h4>
+    <input id="findId" type="text" placeholder="find data using id"><br><br>
+    <button type="submit" id="findBtn">FIND</button>
+    <h3 id="findName"></h3>
+    <h3 id="findAge"></h3>
+
+  </div>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxUV7uILtNGjzpXHOykh13lGOQuQG_9mo",
+      authDomain: "abdu-932e9.firebaseapp.com",
+      projectId: "abdu-932e9",
+      storageBucket: "abdu-932e9.firebasestorage.app",
+      messagingSenderId: "748357225149",
+      appId: "1:748357225149:web:2d334ef3a54565455cc5d4"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    import { getDatabase, set, ref, remove, update, child, get }
+      from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+    const db = getDatabase();
+    // get all inputs
+    let enterName = document.getElementById('enterName');
+    let enterAge = document.getElementById('enterAge');
+    let enterId = document.getElementById('enterId');
+    let findId = document.getElementById('findId');
+ 
+
+    let findName=document.getElementById('findName');
+    let findAge=document.getElementById("findAge");
+    //buttons
+    let insertBtn = document.getElementById('insert');
+    let updateBtn = document.getElementById('update');
+    let removeBtn = document.getElementById('remove');
+    let findBtn = document.getElementById('findBtn');
+   
+    //functions
+    function insertData(){
+  set(ref(db,"people/"+enterId.value) , {
+    Name:enterName.value,
+    Age:enterAge.value,
+    ID:enterId.value
+  })
+  .then(()=>{
+    alert('the Data insered seccsussfuly')
+  })
+  .catch((error)=>{
+    alert(error);
+  })
+    }
+
+
+
+    function updateData(){
+      
+    }
+    function removeData(){
+      
+    }
+    function findData(){
+     const refDb=ref(db);
+     get(child(refDb,'people/'  +findId.value))
+     .then((dataGet)=>{
+      if(dataGet.exists){
+     findName.innerHTML=  'Name :' + dataGet.val().Name ;
+     findAge.innerHTML="Age :" + dataGet.val().Age;
+         }
+         else{
+          alert("the data not found");
+         }
+     })
+     .catch((error)=>{
+      alert(error);
+     })
+    }
+   // even listener for all buttons
+    insertBtn.addEventListener("click",insertData);
+    findBtn.addEventListener('click',findData);
+    updateBtn.addEventListener('click',updateData);
+    removeBtn.addEventListener("click",removeData);
+
+  </script>
+
+
+</body>
+
+</html>
