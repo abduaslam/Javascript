@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is my first webpage created using HTML.">
+    <meta name="keywords" content="HTML, web development, coding, tutorial">
+    <title>My First Web Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<style>
+ body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   }
+   #myForm{
+    padding: 30px 3px;
+    background-color: aquamarine;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+   }
+   input{
+    margin: 10px;
+    background-color:white;
+    border-radius: 8px;
+    border: 2px black solid;
+    padding: 4px 0px;
+    text-align: center;
+   }
+
+   button{
+    margin-bottom: 10px;
+    background-color: rgb(18, 245, 10);
+    border-radius: 4px;
+    padding: 4px 5px;
+   }
+   button:hover{
+    background-color: aliceblue;
+   }
+</style>
+
+<body>
+<form id="myForm" action="">
+    <label for="">Name</label><br>
+    <input id="name" type="text" placeholder="Enter Your name"><br>
+     <label for="">Age</label><br>
+    <input id="age" type="text" placeholder="Enter your age"><br>
+     <label for="">ID</label><br>
+    <input id="id" type="text" placeholder="Enter Your Id"><br>
+    <button id="insertBtn" type="submit"> INSERT</button>
+</form>
+  
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import {set ,getDatabase,ref,child,update,remove}from
+  "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAxUV7uILtNGjzpXHOykh13lGOQuQG_9mo",
+    authDomain: "abdu-932e9.firebaseapp.com",
+    databaseURL: "https://abdu-932e9-default-rtdb.firebaseio.com",
+    projectId: "abdu-932e9",
+    storageBucket: "abdu-932e9.firebasestorage.app",
+    messagingSenderId: "748357225149",
+    appId: "1:748357225149:web:2f2ea0f4c51998c55cc5d4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db=getDatabase(app);
+
+  // all inputs 
+
+  let name=document.getElementById("name");
+   let id=document.getElementById("id");
+    let age=document.getElementById("age");
+   
+
+
+      let insertBtn=document.getElementById("insertBtn");
+
+      function insertData(){
+        set(ref(db,'Datas/'+id.value),{
+            Name:name.value,
+            Age:age.value,
+            Id:id.value
+        })
+        .then(()=>{
+            alert("the data insert secssusuy")
+        })
+        .catch((error)=>{
+            alert(error)
+        })
+      }
+
+      insertBtn.addEventListener("click",insertData);
+</script>
+    
+</body>
+
+</html>
