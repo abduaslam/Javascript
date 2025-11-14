@@ -1,108 +1,76 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <style >
-   
-        .game{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-              background-color: white;
-            color: white;
-            padding: 5px;
-            
-        }
-        .title{
-            height: 20px;
-            width: 330px;
-            margin: 10px;
-            padding:10px 0px;
-            background-color: #d26;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 400;
-        }
-        span{
-            color: green;
-        }
-        .squar{
-            
-            width: 80px;
-            height: 80px;
-            float: left;
-            margin: 8px;
-            padding: 10px;
-            background-color: #d26;
-            border-radius: 19px;
-            font-size: 34px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-    
-        }
-        .squar:hover{
-         background-color: green;
-            
-            
-        }
-    </style>
-
-    </head>
-
-<body>
-<p id="text">
-
-<div class="game">
-    <div class="title" id="title1">34</div>
-     <div>
-    <div class="squar" id="item1" onclick="game(this.id)"></div>
- <div class="squar" id="item2" onclick="game(this.id)"></div>   
- <div class="squar" id="item3" onclick="game(this.id)"></div>
- </div>
-   <div>
-  <div class="squar" id="item4" onclick="game(this.id)"></div>
-
- <div class="squar" id="item5" onclick="game(this.id)"></div>
- <div class="squar" id="item6" onclick="game(this.id)"></div>
- </div>
- <div>
- <div class="squar" id="item7" onclick="game(this.id)"></div>
- <div class="squar" id="item8" onclick="game(this.id)"></div>  
- <div class="squar" id="item9" onclick="game(this.id)" ></div>
- </div>
-
-
-<script>
-    title=document.querySelector(".title");
-   let squar=[];
-    turn="x";
-
-    function winner(){
-  for()
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    function game (Id){
-  let element= document.getElementById(Id);
-        if(turn==='x' && element.innerHTML=='')
-        {
-        element.innerHTML=turn;
-        title.innerHTML="o";
-        turn='o'
-        }
-        else if (turn==='o' &&element.innerHTML==''){
-            element.innerHTML=turn;
-            title.innerHTML="x";
-            turn="x";
-            
-        }
-    
-}
+    .game {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 50px; background-color: rgb(34, 32, 31);
+      width: fit-content;
+      padding: 10px;
+      border-radius:1rem;
+    }
+    .title {
+      width: 200px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #d26;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      border-radius: 8px;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+    }
+    .squar {
+      width: 100px;
+      height: 100px;
+      background-color: #d26;
+      border-radius: 15px;
+      font-size: 48px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .squar:hover {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="game">
+    <div class="title" id="title">Turn: X</div>
+    <div class="board">
+      <div class="squar" id="item1" onclick="game(this.id)"></div>
+      <div class="squar" id="item2" onclick="game(this.id)"></div>
+      <div class="squar" id="item3" onclick="game(this.id)"></div>
+      <div class="squar" id="item4" onclick="game(this.id)"></div>
+      <div class="squar" id="item5" onclick="game(this.id)"></div>
+      <div class="squar" id="item6" onclick="game(this.id)"></div>
+      <div class="squar" id="item7" onclick="game(this.id)"></div>
+      <div class="squar" id="item8" onclick="game(this.id)"></div>
+      <div class="squar" id="item9" onclick="game(this.id)"></div>
+    </div>
+  </div>
 
-  
-</script>
-</div>
+  <script src="./script.js">
+   
+  </script>
 </body>
 </html>
-
