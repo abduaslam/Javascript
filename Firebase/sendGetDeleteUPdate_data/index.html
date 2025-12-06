@@ -29,7 +29,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+  import { getDatabase, onValue, ref ,remove,update ,child} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCZ774I4-U7CnvJ0R43zJifEfE5sGM48lY",
@@ -44,25 +44,29 @@
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
-const  tableRef=ref(db,"studants")
-onValue(tableRef,(snapshot)=>{
-  let data =snapshot.val();
-  let table1=document.getElementById("tableData");
-  table1.innerHTML=""
-  for(let elem in data){
-    const studant=data[elem];
-    table1.innerHTML += `
-    <tr class="p-2"> 
-      <td class="p-1 border border-blue-200"> ${studant.id} </td>
-      <td class="p-1 border border-blue-200"> ${studan.name} </td>
-      <td class="p-1 border border-blue-200"> ${studant.age} </td>
-      <td class="p-1 border border-blue-200"> ${studant.phone} </td>
-      <td class="p-1 border border-blue-200"> ${studant.location} </td>
+const studentsRef = ref(db, "studant"); // example folder name
+
+// get data from firebase and display in table
+onValue(studentsRef, (snapshot) => {
+  const data = snapshot.val();
+  const tbody = document.getElementById("tableData");
+
+  tbody.innerHTML = ""; // clear table before adding new rows
+
+  for (let id in data) {
+    const s = data[id];
+
+    tbody.innerHTML += `
+      <tr class="border-b hover:bg-gray-100">
+        <td class="p-2 border-r">${s.id}</td>
+        <td class="p-2 border-r">${s.name}</td>
+        <td class="p-2 border-r">${s.age}</td>
+        <td class="p-2 border-r">${s.location}</td>
+        <td class="p-2">${s.phone}</td>
       </tr>
-    
-    `
+    `;
   }
-})
+});
 </script>
 
 </body>
