@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nested loop</title>
+<body>
+    <h3>hello studant</h3>
+    <script>
+      
+let n = 5; // number of rows
+
+for (let i = 1; i <= n; i++) {
+  let stars = "";
+  for (let j = 1; j <= i; j++) {
+    stars += "*";
+    
+  }
+  console.log(stars);
+}
+
+
+
+
+//
+let products=["keybord","mouse","pen","pad", "moniter"]
+let colors=["red","green","black"]
+let models=[2024,2025]
+for(let i=0;i<products.length;i++){
+    console.log("#".repeat(15))
+    console.log(products[i])
+     console.log("colors:")
+    for(j=0;j<colors.length;j++){
+        console.log(colors[j])
+          
+    }
+    console.log("models:")
+    for(let k=0;k<models.length;k++){
+        console.log(models[k])
+    }
+}
+
+    </script>
+</body>
+</html>
