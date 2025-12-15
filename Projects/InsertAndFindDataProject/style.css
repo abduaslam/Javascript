@@ -1,0 +1,43 @@
+
+    body {
+      background-color: rgb(10, 73, 73);
+      display: flex;
+      justify-content: center;
+      padding: 30px 13px;
+      font-family: 'Courier New', Courier, monospace;
+      gap: 20px;
+    }
+
+    #findDetails {
+      background-color: bisque;
+      padding: 14px 9px;
+      border-radius: 10px;
+      box-shadow: 4 4 5 #f57;
+      text-align: center;
+
+    }
+
+    #insertDetails {
+      background-color: rgb(175, 120, 53);
+      padding: 14px 5px;
+      border-radius: 10px;
+      box-shadow: 4 4 5 #f57;
+      text-align: center;
+
+    }
+
+    input {
+      padding: 4px;
+      border-radius: 10px;
+    }
+
+    button {
+      border-radius: 5px;
+      margin-bottom: 5px;
+      padding: 4px;
+    }
+
+    button:hover {
+      background-color: rgb(17, 241, 241);
+    }
+  
